@@ -27,6 +27,9 @@ from django.views.generic import View
 
 from django.urls import reverse
 
+
+from rest_framework.pagination import PageNumberPagination
+
 # Create your views here.
 @api_view(["GET"])
 def test(request):

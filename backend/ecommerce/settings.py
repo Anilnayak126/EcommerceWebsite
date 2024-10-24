@@ -89,6 +89,10 @@ TEMPLATES = [
     },
 ]
 
+# settings.py
+
+
+
 WSGI_APPLICATION = 'ecommerce.wsgi.application'
 
 
