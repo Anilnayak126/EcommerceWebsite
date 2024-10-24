@@ -1,0 +1,39 @@
+/* cards.css */
+
+body {
+    background-color: #f8f9fa; /* Light background for a modern look */
+}
+
+h1 {
+    color: #343a40; /* Darker text for better readability */
+}
+
+.card {
+    border-radius: 10px; /* Rounded corners for cards */
+    overflow: hidden; /* Prevents overflow from images */
+    transition: transform 0.3s ease; /* Smooth scaling on hover */
+}
+
+.card:hover {
+    transform: scale(1.05); /* Scale effect on hover */
+}
+
+.product-image {
+    height: 250px; /* Set a uniform height for images */
+    object-fit: cover; /* Cover the area while maintaining aspect ratio */
+}
+
+.btn-primary {
+    background-color: #007bff; /* Bootstrap primary color */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded button */
+    transition: background-color 0.3s ease; /* Smooth color change on hover */
+}
+
+.btn-primary:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+
+.card-body {
+    padding: 1.5rem; /* Increased padding for better spacing */
+}

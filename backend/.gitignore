@@ -1,0 +1,5 @@
+ecom/
+static/
+__pycache__/
+*.pyc
+migrations/

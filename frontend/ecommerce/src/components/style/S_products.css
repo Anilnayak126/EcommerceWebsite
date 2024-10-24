@@ -1,0 +1,7 @@
+/* S_products.css */
+.product-image {
+    max-height: 400px; /* Adjust this value as needed */
+    object-fit: cover; /* This ensures the image covers the area without stretching */
+    width: 100%; /* Ensures it takes full width of the container */
+  }
+  

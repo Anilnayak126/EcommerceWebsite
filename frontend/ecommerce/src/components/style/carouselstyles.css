@@ -1,0 +1,11 @@
+/* carouselstyles.css */
+.full-screen-image {
+  object-fit: cover; /* Ensures the image covers the full space */
+  height: 500px; /* Set a fixed height for the carousel images */
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: rgba(0, 0, 0, 0.5); /* Dark background for control icons */
+  border-radius: 50%; /* Round control icons */
+}
