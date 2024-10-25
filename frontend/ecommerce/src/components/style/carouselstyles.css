@@ -1,58 +1,30 @@
-/* Add this to your existing carouselstyles.css file */
+/* Ensure the images fully cover the carousel container */
+.carousel .carousel-item img {
+  object-fit: cover;
+  height: 60vh; /* Adjust as needed for different screen sizes */
+}
 
-/* Styling for product captions */
+@media (min-width: 992px) { /* For larger screens */
+  .carousel .carousel-item img {
+    height: 80vh; /* Increase height for more impact on large displays */
+  }
+}
+
+/* Styling for captions to add a professional, elegant look */
 .carousel-caption {
-  bottom: 20%; /* Keep some space from the bottom */
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  padding: 1rem;
+  border-radius: 8px;
 }
 
-/* Default font sizes for larger screens */
-.product-name {
-  font-size: 1.5rem; /* Default size for larger screens */
+.carousel-caption h5 {
+  color: #f8f9fa;
+  font-size: 1.5rem;
+  font-weight: 600;
 }
 
-.product-brand {
-  font-size: 1.2rem; /* Default size for larger screens */
-}
-
-.product-price {
-  font-size: 1.1rem; /* Default size for larger screens */
-}
-
-/* Responsive styling for smaller screens */
-@media (max-width: 768px) {
-  .carousel-caption {
-    bottom: 15%; /* Adjust position for smaller screens */
-    padding: 1rem; /* Less padding */
-  }
-
-  .product-name {
-    font-size: 1.3rem; /* Smaller font size for mobile */
-  }
-
-  .product-brand {
-    font-size: 1rem; /* Smaller font size for mobile */
-  }
-
-  .product-price {
-    font-size: 0.9rem; /* Smaller font size for mobile */
-  }
-}
-
-@media (max-width: 576px) {
-  .carousel-caption {
-    bottom: 10%; /* Further adjust for extra small screens */
-    padding: 0.5rem; /* Less padding */
-  }
-
-  .product-name {
-    font-size: 1.2rem; /* Adjust for smaller screens */
-  }
-
-  .product-brand {
-    font-size: 0.9rem; /* Adjust for smaller screens */
-  }
-
-  .product-price {
-    font-size: 0.8rem; /* Adjust for smaller screens */
-  }
+.carousel-caption p {
+  color: #f8f9fa;
+  font-size: 1rem;
+  margin-top: 0.5rem;
 }

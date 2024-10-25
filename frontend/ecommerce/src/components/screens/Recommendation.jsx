@@ -42,7 +42,7 @@ const RecommendedProducts = () => {
                   style={{ objectFit: 'cover', height: '200px' }}
                 />
                 <div className="card-body">
-                  <h5 className="card-title">{product.name}</h5>
+                  <h5 className="card-title">{product.productName}</h5>
                   <p className="card-text">${product.price}</p>
                   <button className="btn btn-primary">Add to Cart</button>
                 </div>

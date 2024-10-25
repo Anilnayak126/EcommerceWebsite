@@ -1,14 +1,12 @@
 import React from "react";
-import '../style/carouselstyles.css'; // Include custom CSS styles
+import '../style/carouselstyles.css'; // Custom CSS styles
 import { images } from "../../data/Images";
-
-// Define your images array
 
 export default function ProductCarousel() {
   return (
     <div 
       id="productCarousel" 
-      className="carousel slide shadow-lg rounded" 
+      className="carousel slide shadow-lg rounded overflow-hidden" 
       data-bs-ride="carousel" 
       data-bs-interval="3000"
     >
@@ -19,8 +17,12 @@ export default function ProductCarousel() {
               src={image.src}
               className="d-block w-100 full-screen-image" 
               alt={`Slide ${image.id}`} // Placeholder alt text
-              style={{ objectFit: 'cover', height: '60vh' }} // Ensure image fits the container
             />
+            {/* Optional caption section for a more polished look */}
+            <div className="carousel-caption d-none d-md-block">
+              <h5>Professional Online Shopping</h5>
+              <p>Discover the latest trends and exclusive offers!</p>
+            </div>
           </div>
         ))}
       </div>
