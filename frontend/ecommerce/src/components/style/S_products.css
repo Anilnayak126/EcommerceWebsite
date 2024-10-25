@@ -1,7 +1,56 @@
-/* S_products.css */
+/* Product Image */
 .product-image {
-    max-height: 400px; /* Adjust this value as needed */
-    object-fit: cover; /* This ensures the image covers the area without stretching */
-    width: 100%; /* Ensures it takes full width of the container */
-  }
-  
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+/* Offer Badge Styling */
+.offer-badge {
+  top: 10px;
+  left: 10px;
+  background-color: red;
+  color: white;
+  padding: 5px 10px;
+  font-weight: bold;
+  border-radius: 5px;
+  z-index: 1;
+  font-size: 1.2rem;
+}
+
+/* Offer Icon Styling */
+.offer-icon {
+  top: 15px;
+  right: 15px;
+  width: 50px;
+  height: 50px;
+  z-index: 2;
+}
+
+/* Card and Buttons Styling */
+.card-body {
+  padding: 20px;
+}
+
+.text-primary {
+  font-size: 1.75rem;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
+
+.badge.bg-success {
+  background-color: #28a745;
+}
+
+.badge.bg-danger {
+  background-color: #dc3545;
+}

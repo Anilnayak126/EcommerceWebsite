@@ -16,6 +16,7 @@ class Products(models.Model):
     countInStock = models.IntegerField(null=True,blank=True,default=0)
     createdAt= models.DateField(auto_now_add=True)
     _id = models.AutoField(primary_key=True,editable=False)
+    offer = models.BooleanField(default=False)
 
     def __str__(self):
         return self.productName

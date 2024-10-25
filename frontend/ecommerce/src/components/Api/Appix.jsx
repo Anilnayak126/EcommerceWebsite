@@ -1,41 +1,38 @@
-import React, { useEffect, useState } from "react";
-import axios from 'axios';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import ItemLoader from '../loader/ItemLoader';
-import '../style/crards.css'; // Import your custom CSS
-import { Link } from "react-router-dom";
-import Rating from '../loader/Ratings';
-import { listProducts } from "../../actions/productsActions";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from "react-router-dom";
+import { listProducts } from "../../actions/productsActions";
+import ItemLoader from '../loader/ItemLoader';
+import Rating from '../loader/Ratings';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import '../style/crards.css'; 
 
 export default function Appix() {
     const dispatch = useDispatch();
-    
     const productsList = useSelector((state) => state.productsList);
-    const { error, loading, products } = productsList;  // Ensure 'loading' is correctly named
-    
+    const { error, loading, products } = productsList;
+
     useEffect(() => {
         dispatch(listProducts());
     }, [dispatch]);
 
-    console.error(error);
-    
-    // Handle loading state
     if (loading) return <ItemLoader />;
-    
-    // Handle error state with fallback error message
     if (error) return <div className="alert alert-danger">Error: {error}</div>;
-
-    // Ensure products exist before mapping over them
-    // if (!products || products.length === 0) return <div className="alert alert-info">No products found</div>;
 
     return (
         <div className="container">
-            <h1 className="text-center mb-4"> Products</h1>
+            <h1 className="text-center mb-4">Products</h1>
             <div className="row">
                 {products.map((product) => (
                     <div className="col-md-4 mb-4" key={product._id}>
-                        <div className="card modern-card">
+                        <div className="card modern-card position-relative">
+                            {product.offer && (
+                                <img 
+                                    src="https://img.icons8.com/?size=100&id=XFuUHLsBR6Py&format=png&color=000000" 
+                                    alt="Offer Icon" 
+                                    className="offer-icon" 
+                                />
+                            )}
                             <img 
                                 src={`http://127.0.0.1:8000${product.image}`} 
                                 alt={product.productName} 
