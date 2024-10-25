@@ -1,81 +1,55 @@
 import React from 'react';
 import { LinkContainer } from 'react-router-bootstrap';
-import { Navbar, Nav } from 'react-bootstrap';
+import { Navbar, Nav, Button } from 'react-bootstrap';
 
 export default function Headers() {
   return (
-    <div>
-      <nav className="navbar navbar-expand-lg bg-primary" data-bs-theme="primary">
-        <div className="container-fluid">
-          <LinkContainer to="/">
-            <Nav.Link className="navbar-brand">AnilzFashion</Nav.Link>
-          </LinkContainer>
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarColor02"
-            aria-controls="navbarColor02"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbarColor02">
-            <ul className="navbar-nav me-auto">
-              <li className="nav-item">
-                <LinkContainer to="/">
-                  <Nav.Link className="nav-link active">Home <i className="fa fa-home" aria-hidden="true"></i></Nav.Link>
-                </LinkContainer>
-              </li>
-              <li className="nav-item">
-                <LinkContainer to="/Cart">
-                  <Nav.Link className="nav-link">Cart</Nav.Link>
-                </LinkContainer>
-              </li>
-              <li className="nav-item">
-                <LinkContainer to="/Products">
-                  <Nav.Link className="nav-link">Products</Nav.Link>
-                </LinkContainer>
-              </li>
-              <li className="nav-item">
-                <LinkContainer to="/about">
-                  <Nav.Link className="nav-link">About</Nav.Link>
-                </LinkContainer>
-              </li>
-              <li className="nav-item dropdown">
-                <Nav.Link
-                  className="nav-link dropdown-toggle"
-                  data-bs-toggle="dropdown"
-                  role="button"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                >
-                  NewUser?
-                </Nav.Link>
-                <div className="dropdown-menu">
-                  <LinkContainer to="/Signup">
-                    <Nav.Link className="dropdown-item">SignUp</Nav.Link>
-                  </LinkContainer>
-                  <LinkContainer to="/Login">
-                    <Nav.Link className="dropdown-item">Login</Nav.Link>
-                  </LinkContainer>
-                  <div className="dropdown-divider"></div>
-                  <LinkContainer to="/separated-link">
-                    <Nav.Link className="dropdown-item">LogOut</Nav.Link>
-                  </LinkContainer>
-                </div>
-              </li>
-            </ul>
-            <form className="d-flex">
-              <input className="form-control me-sm-2" type="search" placeholder="Search" />
-              <button className="btn btn-secondary my-2 my-sm-0" type="submit">
-                Search
-              </button>
-            </form>
+    <Navbar bg="primary" variant="dark" expand="lg" className="px-3">
+      <div className="container-fluid">
+        <LinkContainer to="/">
+          <Navbar.Brand className="fw-bold">AnilzFashion</Navbar.Brand>
+        </LinkContainer>
+        <Navbar.Toggle aria-controls="navbarColor02" />
+        <Navbar.Collapse id="navbarColor02">
+          <Nav className="me-auto">
+            <LinkContainer to="/">
+              <Nav.Link className="d-flex align-items-center ms-3 mx-3">
+                Home <i className="fa fa-home ms-1" aria-hidden="true"></i>
+              </Nav.Link>
+            </LinkContainer>
+            <LinkContainer to="/Cart">
+              <Nav.Link className="d-flex align-items-center mx-3">
+                Cart <i className="fa fa-shopping-cart ms-1" aria-hidden="true"></i>
+              </Nav.Link>
+            </LinkContainer>
+            <LinkContainer to="/Products">
+              <Nav.Link className="d-flex align-items-center mx-3">
+                Products <i className="fa fa-tags ms-1" aria-hidden="true"></i>
+              </Nav.Link>
+            </LinkContainer>
+            <LinkContainer to="/about">
+              <Nav.Link className="d-flex align-items-center mx-3">
+                About <i className="fa fa-info-circle ms-1" aria-hidden="true"></i>
+              </Nav.Link>
+            </LinkContainer>
+            <LinkContainer to="/Contact">
+              <Nav.Link className="d-flex align-items-center mx-3">
+                Contact<i class="fa-solid fa-phone ms-1" aria-hidden="true"></i>
+              </Nav.Link>
+            </LinkContainer>
+          </Nav>
+
+          {/* Sign Up and Logout Buttons */}
+          <div className="d-flex align-items-center">
+            <LinkContainer to="/Signup">
+              <Button variant="light"  className="me-2 fw-bold">Sign Up</Button>
+            </LinkContainer>
+            <LinkContainer to="/">
+              <Button  className=" btn btn-danger fw-bold p-1.9 ">Logout</Button>
+            </LinkContainer>
           </div>
-        </div>
-      </nav>
-    </div>
+        </Navbar.Collapse>
+      </div>
+    </Navbar>
   );
 }

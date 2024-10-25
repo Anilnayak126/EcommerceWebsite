@@ -13,6 +13,7 @@ About
 
 import Appix from "./components/Api/Appix";
 import About from "./components/screens/AboutScreens";
+import Contact from "./components/screens/ContactScreens";
 
 const App = () => {
   return (
@@ -39,6 +40,9 @@ const App = () => {
         </Routes>
         <Routes>
           <Route  path="/About" element={<About />} />
+        </Routes>
+        <Routes>
+          <Route  path="/Contact" element={<Contact />} />
         </Routes>
       </Router>
     </>

@@ -29,6 +29,8 @@ from django.urls import reverse
 
 
 from rest_framework.pagination import PageNumberPagination
+from smtplib import SMTPServerDisconnected,SMTPException
+
 
 # Create your views here.
 @api_view(["GET"])
@@ -93,22 +95,27 @@ def registerUser(request):
             username=data['email'],
             email=data['email'],
             password=make_password(data['password']),
-            is_active = False 
+            is_active = True 
         )
 
+        user.save()
+
+        '''
         # Email Feature
-        email_message = "Activate Your Account"
+        email_subject = "Activate Your Account"
         message = render_to_string(
             "activate.html",
             {
             'user':user,
-            "domain":'127.0.0.1:8000/',
+            "domain":'127.0.0.1:8000',
             "uid":urlsafe_base64_encode(force_bytes(user.pk)),
             "token": generate_token.make_token(user)
             }
         )
 
-        print(message) 
+        email_message = EmailMessage(email_subject,message,settings.EMAIL_HOST_USER,[data['email']])
+        email_message.send()
+        '''
         # Serialize user data with token
         serializer = UserSerializerwithToken(user, many=False)
 
