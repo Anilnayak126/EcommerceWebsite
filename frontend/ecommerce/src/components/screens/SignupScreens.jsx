@@ -53,7 +53,7 @@ function SignupScreens() {
     }
     else{
         dispatch(Signup(formData.firstName,formData.lastName,formData.email,formData.password1))
-        setMessage("Signup is success please activate ur account")
+        setMessage("*Signup is success please activate ur account")
         navigate("/Login")
       
     }
@@ -64,6 +64,7 @@ function SignupScreens() {
     <div className="container d-flex justify-content-center align-items-center vh-100">
       <div className="card p-4 shadow-lg" style={{ width: '100%', maxWidth: '400px', borderRadius: '15px' }}>
         <h3 className="text-center mb-4">Register</h3>
+        <p className='text-center text-danger'>{message}</p>
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
             <label htmlFor="firstName" className="form-label">First Name</label>

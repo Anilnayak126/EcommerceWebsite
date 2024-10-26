@@ -23,10 +23,10 @@ export const Signup =(fname,lname,email,password) => async(dispatch)=>{
 
         const { data} = await axios.post('http://127.0.0.1:8000/api/users/register/',
             {
-            'fname':fname,
-            'lname':lname,
-            'email':email,
-            'password':password
+            fname:fname,
+            lname:lname,
+            email:email,
+            password:password
         },
         config
     )
@@ -62,8 +62,8 @@ export const Login =(email,password) => async(dispatch)=>{
 
         const { data} = await axios.post('http://127.0.0.1:8000/api/users/login/',
             {
-            'eamil':email,
-            'password':password
+            username:email,
+            password:password
         },
         config
     )

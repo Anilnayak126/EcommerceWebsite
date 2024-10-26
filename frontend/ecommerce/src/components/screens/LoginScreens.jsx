@@ -1,12 +1,27 @@
-// LoginForm.js
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { userLoginReducers } from '../../reducers/userReducer';
+import { Login } from '../../actions/userActions';
 
-function LoginScreens() {
+function LoginScreen() {
+  const navigate = useNavigate();  // Corrected typo
+  const location = useLocation();
+  const redirect = location.search ? location.search.split("=")[1] : "/";
+  const userLogin = useSelector((state) => state.userLogin);
+  const { error, loading, userInfo } = userLogin;
+  const dispatch = useDispatch();
+
   const [formData, setFormData] = useState({
-    username: '',
+    email: '',
     password: ''
   });
+
+  useEffect(() => {
+    if (userInfo) {
+      navigate(redirect);  // Use redirect for navigation
+    }
+  }, [userInfo, redirect, navigate]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -18,7 +33,7 @@ function LoginScreens() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Login data submitted:', formData);
+    dispatch(Login(formData.email, formData.password));
   };
 
   return (
@@ -27,14 +42,14 @@ function LoginScreens() {
         <h3 className="text-center mb-4">Login</h3>
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
-            <label htmlFor="username" className="form-label">Username</label>
+            <label htmlFor="email" className="form-label">Email</label>
             <input
               type="text"
               className="form-control"
-              id="username"
-              name="username"
-              placeholder="Enter your username"
-              value={formData.username}
+              id="email"
+              name="email"  // Corrected to "email"
+              placeholder="Enter your email"
+              value={formData.email}
               onChange={handleChange}
               required
             />
@@ -54,12 +69,12 @@ function LoginScreens() {
             />
           </div>
 
+          {error && <div className="alert alert-danger">{error}</div>} 
           <button type="submit" className="btn btn-primary w-100 mt-3">Login</button>
           
-        
           <div className="text-center mt-3">
-            <span>New user? </span>
-            <Link to="/signup">Create an account</Link>
+            <span>New user? </span>  
+            <Link to="/Signup">Create an account</Link>
           </div>
         </form>
       </div>
@@ -67,4 +82,4 @@ function LoginScreens() {
   );
 }
 
-export default LoginScreens;
+export default LoginScreen;

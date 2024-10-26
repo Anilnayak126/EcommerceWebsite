@@ -44,8 +44,11 @@ export default function Headers() {
             <LinkContainer to="/Signup">
               <Button variant="light"  className="me-2 fw-bold">Sign Up</Button>
             </LinkContainer>
+            <LinkContainer to="/Login">
+              <Button variant="light"  className=" btn btn-danger fw-bold p-1.9 ">Log In</Button>
+            </LinkContainer>
             <LinkContainer to="/">
-              <Button  className=" btn btn-danger fw-bold p-1.9 ">Logout</Button>
+              <Button  className="me-2 btn btn-danger fw-bold p-1.9  ">Log out</Button>
             </LinkContainer>
           </div>
         </Navbar.Collapse>

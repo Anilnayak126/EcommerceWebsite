@@ -29,11 +29,7 @@ export default function S_products() {
             {/* Offer Icon */}
             {product.offer && (
               <>
-                <img
-                  src="https://img.icons8.com/?size=100&id=XFuUHLsBR6Py&format=png&color=000000"
-                  alt="Offer Icon"
-                  className="offer-icon position-absolute"
-                />
+          
                 <span className="offer-badge position-absolute">Special Offer!</span>
               </>
             )}
