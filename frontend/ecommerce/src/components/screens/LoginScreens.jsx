@@ -1,6 +1,6 @@
-
 // LoginForm.js
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 function LoginScreens() {
   const [formData, setFormData] = useState({
@@ -18,7 +18,6 @@ function LoginScreens() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Add login logic here
     console.log('Login data submitted:', formData);
   };
 
@@ -56,6 +55,12 @@ function LoginScreens() {
           </div>
 
           <button type="submit" className="btn btn-primary w-100 mt-3">Login</button>
+          
+        
+          <div className="text-center mt-3">
+            <span>New user? </span>
+            <Link to="/signup">Create an account</Link>
+          </div>
         </form>
       </div>
     </div>

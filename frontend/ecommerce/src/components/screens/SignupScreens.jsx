@@ -1,7 +1,13 @@
 
 
 // RegisterForm.js
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
+import {Link,useNavigate,useLocation, useLoaderData} from 'react-router-dom'
+import {useDispatch,useSelector}from 'react-redux'
+import { Signup } from '../../actions/userActions';
+
+
+
 
 function SignupScreens() {
   const [formData, setFormData] = useState({
@@ -11,6 +17,22 @@ function SignupScreens() {
     password1: '',
     password2: ''
   });
+  const [message,setMessage] = useState()
+  const navigate = useNavigate()
+  const dispatch = useDispatch();
+  const location = useLocation();
+  const redirect = location.search?location.search.split("=")[1]:"/"
+  const userSignup = useSelector((state) => state.userSignup)
+  const {error,loading,userInfo} = userSignup;
+
+  useEffect(()=>{
+    if(userInfo){
+      navigate('/Login')
+    }
+
+  },[userInfo,redirect])
+
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -20,9 +42,21 @@ function SignupScreens() {
     });
   };
 
+  
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Add form submission logic here
+    if (formData.password1 !== formData.password2){
+        setMessage('passwords do not match')
+        navigate('/Signup')
+
+    }
+    else{
+        dispatch(Signup(formData.firstName,formData.lastName,formData.email,formData.password1))
+        setMessage("Signup is success please activate ur account")
+        navigate("/Login")
+      
+    }
     console.log('Form data submitted:', formData);
   };
 

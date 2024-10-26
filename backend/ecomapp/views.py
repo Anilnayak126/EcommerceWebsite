@@ -94,11 +94,9 @@ def registerUser(request):
             last_name=data['lname'],
             username=data['email'],
             email=data['email'],
-            password=make_password(data['password']),
-            is_active = True 
+            password=make_password(data['password'])
         )
 
-        user.save()
 
         '''
         # Email Feature
