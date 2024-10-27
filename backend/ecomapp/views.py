@@ -38,13 +38,20 @@ def test(request):
 
     return JsonResponse("jay jaga",safe=False)
 
+class ProductPagination(PageNumberPagination):
+    page_size = 10  
+    page_size_query_param = 'page_size'
+    max_page_size = 100
+
 @api_view(['GET'])
 def getProducts(request):
+    products = Products.objects.all()
+    paginator = ProductPagination()
+    paginated_products = paginator.paginate_queryset(products, request)
+    serializer = ProductsSerializer(paginated_products, many=True)
+    return paginator.get_paginated_response(serializer.data)
 
-    data = Products.objects.all()
-    serializer = ProductsSerializer(data,many=True)
 
-    return Response(serializer.data)
 
 
 @api_view(['GET'])

@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { removeFromCart, listCartItems } from '../../actions/cartActions';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../style/cart.css';
+import { Link } from 'react-router-dom';
 
 const CartScreen = () => {
     const dispatch = useDispatch();
@@ -11,7 +12,7 @@ const CartScreen = () => {
 
     useEffect(() => {
         if (cartItems.length === 0) {
-            dispatch(listCartItems()); // Fetch from backend if cart is empty
+            dispatch(listCartItems()); 
         }
     }, [dispatch, cartItems.length]);
 
@@ -23,7 +24,15 @@ const CartScreen = () => {
         <div className="container cart-container">
             <h1 className="text-center mb-4">Shopping Cart</h1>
             {cartItems.length === 0 ? (
-                <p>Your cart is empty</p>
+                <div className='empty-cart text-center'>
+                    <div className="animated-message">
+                        <h2>TILL YOU HAVEN'T BOUGHT ANYTHING 😔</h2>
+                        <p>Why not check out our products?</p>
+                        <Link className='btn btn-primary' to='/Products'>
+                            Go to Products
+                        </Link>
+                    </div>
+                </div>
             ) : (
                 <ul className="list-group">
                     {cartItems.map((item) => (

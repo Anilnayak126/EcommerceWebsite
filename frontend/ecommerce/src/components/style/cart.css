@@ -4,3 +4,37 @@
     height: 80px;      
     object-fit: cover; 
     border-radius: 5px;}
+
+
+    .empty-cart {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 400px; /* Adjust as needed */
+    }
+    
+    .animated-message {
+        animation: fadeIn 1s ease-in-out, bounce 1s infinite;
+    }
+    
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    @keyframes bounce {
+        0%, 100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-10px);
+        }
+    }
+    

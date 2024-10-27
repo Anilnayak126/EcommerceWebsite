@@ -1,39 +1,51 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from "react-router-dom";
 import { listProducts } from "../../actions/productsActions";
 import { addToCart } from "../../actions/cartActions";
-import ItemLoader from '../loader/ItemLoader';
+import ProductSkeletonLoader from '../loader/ProductSkeletonLoader'; // Import the skeleton loader
 import Rating from '../loader/Ratings';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../style/crards.css';
+import Pagination from "../screens/Pagination";
 
 const ProductListScreen = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-
+    
     const productsList = useSelector((state) => state.productsList);
     const { error, loading, products } = productsList;
+    const productList = products.results || [];
+    
+    // Pagination state
+    const [currentPage, setCurrentPage] = useState(1);
+    const pageSize = 3; // Number of items per page
 
     useEffect(() => {
-        dispatch(listProducts());
-    }, [dispatch]);
+        dispatch(listProducts(currentPage, pageSize));
+    }, [dispatch, currentPage]);
 
     const handleAddToCart = (productId) => {
         dispatch(addToCart(productId, 1)).then(() => {
-            // Navigate to CartScreen after adding to cart
             navigate(`/Cart`);
         });
     };
 
-    if (loading) return <ItemLoader />;
+    const handlePageChange = (page) => {
+        setCurrentPage(page);
+    };
+
+    if (loading) return <ProductSkeletonLoader />; // Use the skeleton loader here
     if (error) return <div className="alert alert-danger">Error: {error}</div>;
+
+    const totalCount = products?.count || 0;
+    const totalPages = Math.ceil(totalCount / pageSize);
 
     return (
         <div className="container">
             <h1 className="text-center mb-4">Products</h1>
             <div className="row">
-                {products.map((product) => (
+                {productList.map((product) => (
                     <div className="col-md-4 col-sm-6 mb-4" key={product._id}>
                         <div className="card h-100 position-relative overflow-hidden">
                             {product.offer && (
@@ -47,7 +59,7 @@ const ProductListScreen = () => {
                                 <img 
                                     src={`http://127.0.0.1:8000${product.image}`} 
                                     alt={product.productName} 
-                                    className="card-img-top img-fluid" 
+                                    className="card-img-top img-fluid " 
                                     loading="lazy"
                                 />
                             </div>
@@ -67,7 +79,6 @@ const ProductListScreen = () => {
                                         {product.countInStock > 0 ? `In Stock: ${product.countInStock}` : "Out of Stock"}
                                     </small>
                                 </p>
-                                
                                 <div className="mt-auto d-grid gap-2">
                                     <button className="btn btn-primary w-100" onClick={() => handleAddToCart(product._id)} disabled={product.countInStock === 0}>
                                         Add to Cart
@@ -81,6 +92,11 @@ const ProductListScreen = () => {
                     </div>
                 ))}
             </div>
+            <Pagination 
+                currentPage={currentPage} 
+                totalPages={totalPages} 
+                onPageChange={handlePageChange} 
+            />
         </div>
     );
 };

@@ -8,6 +8,7 @@ import {
   PRODUCT_DETAILS_SUCCESS 
 } from '../constants/ProductConstants';
 
+/*
 // Fetch all products
 export const listProducts = () => async (dispatch) => {
   try {
@@ -29,6 +30,20 @@ export const listProducts = () => async (dispatch) => {
     });
   }
 };
+*/
+
+export const listProducts = (page = 1, pageSize = 10) => async (dispatch) => {
+  try {
+      dispatch({ type: PRODUCT_LIST_REQUEST });
+      const { data } = await axios.get(`http://127.0.0.1:8000/api/product/?page=${page}&page_size=${pageSize}`);
+      console.log(data);
+      
+      dispatch({ type: PRODUCT_LIST_SUCCESS, payload: data });
+  } catch (error) {
+      dispatch({ type: PRODUCT_LIST_FAIL, payload: error.response ? error.response.data : error.message });
+  }
+};
+
 
 // Fetch single product details
 export const DetailsProduct = (id) => async (dispatch) => {

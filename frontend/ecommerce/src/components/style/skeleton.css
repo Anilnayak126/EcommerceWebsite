@@ -1,0 +1,47 @@
+/* src/components/loader/skeleton.css */
+.skeleton-card {
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+.skeleton-image {
+    height: 180px;
+    background-color: #e0e0e0;
+}
+
+.skeleton-title,
+.skeleton-subtitle,
+.skeleton-price,
+.skeleton-rating,
+.skeleton-stock {
+    background-color: #e0e0e0;
+    border-radius: 4px;
+    margin: 0.5rem 0;
+}
+
+.skeleton-title {
+    height: 20px;
+    width: 80%;
+}
+
+.skeleton-subtitle {
+    height: 15px;
+    width: 60%;
+}
+
+.skeleton-price {
+    height: 15px;
+    width: 40%;
+}
+
+.skeleton-rating {
+    height: 15px;
+    width: 50%;
+}
+
+.skeleton-stock {
+    height: 15px;
+    width: 30%;
+}
