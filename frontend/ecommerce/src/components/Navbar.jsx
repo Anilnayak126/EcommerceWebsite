@@ -1,58 +1,99 @@
 import React from 'react';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Navbar, Nav, Button } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../actions/userActions';
+import styled from '@emotion/styled';
 
-export default function Headers() {
+
+const StyledNavLink = styled(Nav.Link)`
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 1.1rem;
+  transition: color 0.3s ease, transform 0.3s ease;
+
+  &:hover {
+    color: #ffe600;
+    transform: scale(1.1);
+  }
+`;
+
+const Header = () => {
+  const dispatch = useDispatch();
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+
+  const logoutHandler = () => {
+    dispatch(logout());
+  };
+
   return (
-    <Navbar bg="primary" variant="dark" expand="lg" className="px-3">
+    <Navbar
+  bg="primary"
+  expand="lg"
+  className="px-3 py-3 shadow-sm navbar-hover-fix"
+  variant="dark"
+  style={{ background: 'linear-gradient(90deg, #0062E6, #33AEFF)' }}
+>
       <div className="container-fluid">
         <LinkContainer to="/">
-          <Navbar.Brand className="fw-bold">AnilzFashion</Navbar.Brand>
+          <Navbar.Brand className="fw-bold fs-3 text-white">
+            AnilzFashion
+          </Navbar.Brand>
         </LinkContainer>
-        <Navbar.Toggle aria-controls="navbarColor02" />
-        <Navbar.Collapse id="navbarColor02">
+        <Navbar.Toggle aria-controls="navbar-nav" />
+        <Navbar.Collapse id="navbar-nav">
           <Nav className="me-auto">
             <LinkContainer to="/">
-              <Nav.Link className="d-flex align-items-center ms-3 mx-3">
-                Home <i className="fa fa-home ms-1" aria-hidden="true"></i>
-              </Nav.Link>
-            </LinkContainer>
-            <LinkContainer to="/Cart">
-              <Nav.Link className="d-flex align-items-center mx-3">
-                Cart <i className="fa fa-shopping-cart ms-1" aria-hidden="true"></i>
-              </Nav.Link>
+              <StyledNavLink>Home</StyledNavLink>
             </LinkContainer>
             <LinkContainer to="/Products">
-              <Nav.Link className="d-flex align-items-center mx-3">
-                Products <i className="fa fa-tags ms-1" aria-hidden="true"></i>
-              </Nav.Link>
+              <StyledNavLink>Products</StyledNavLink>
             </LinkContainer>
-            <LinkContainer to="/about">
-              <Nav.Link className="d-flex align-items-center mx-3">
-                About <i className="fa fa-info-circle ms-1" aria-hidden="true"></i>
-              </Nav.Link>
+            <LinkContainer to="/Cart">
+              <StyledNavLink>Cart</StyledNavLink>
+            </LinkContainer>
+            <LinkContainer to="/About">
+              <StyledNavLink>About</StyledNavLink>
             </LinkContainer>
             <LinkContainer to="/Contact">
-              <Nav.Link className="d-flex align-items-center mx-3">
-                Contact<i class="fa-solid fa-phone ms-1" aria-hidden="true"></i>
-              </Nav.Link>
+              <StyledNavLink>Contact</StyledNavLink>
             </LinkContainer>
           </Nav>
 
-          {/* Sign Up and Logout Buttons */}
           <div className="d-flex align-items-center">
-            <LinkContainer to="/Signup">
-              <Button variant="light"  className="me-2 fw-bold">Sign Up</Button>
-            </LinkContainer>
-            <LinkContainer to="/Login">
-              <Button variant="light"  className=" btn btn-danger fw-bold p-1.9 ">Log In</Button>
-            </LinkContainer>
-            <LinkContainer to="/">
-              <Button  className="me-2 btn btn-danger fw-bold p-1.9  ">Log out</Button>
-            </LinkContainer>
+            {userInfo ? (
+              <>
+                <span className="text-light fw-bold me-3">
+                Welcome, {userInfo.name ? userInfo.name.toUpperCase() : userInfo.username.slice(0, userInfo.username.indexOf('@')).toUpperCase()|| "Guest"}
+                </span>
+                <Button
+                  onClick={logoutHandler}
+                  className="fw-bold me-2"
+                  variant="danger"
+                >
+                  Log out
+                </Button>
+              </>
+            ) : (
+              <>
+                <LinkContainer to="/Signup">
+                  <Button variant="light" className="me-2 fw-bold">
+                    Sign Up
+                  </Button>
+                </LinkContainer>
+                <LinkContainer to="/Login">
+                  <Button variant="light" className="fw-bold">
+                    Log In
+                  </Button>
+                </LinkContainer>
+              </>
+            )}
           </div>
         </Navbar.Collapse>
       </div>
     </Navbar>
   );
-}
+};
+
+export default Header;

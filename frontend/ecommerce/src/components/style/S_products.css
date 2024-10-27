@@ -1,56 +1,54 @@
-/* Product Image */
-.product-image {
-  width: 100%;
-  max-height: 400px;
-  object-fit: cover;
-  border-radius: 5px;
+
+.product-image-container {
+  overflow: hidden;
+  border-radius: 0.5rem;
 }
 
-/* Offer Badge Styling */
+.product-image {
+  width: 100%;
+  height: auto;
+  max-height: 400px; 
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.product-image:hover {
+  transform: scale(1.05); 
+}
+
+
 .offer-badge {
   top: 10px;
   left: 10px;
-  background-color: red;
-  color: white;
-  padding: 5px 10px;
+  padding: 0.3rem 0.6rem;
+  font-size: 0.9rem;
   font-weight: bold;
-  border-radius: 5px;
   z-index: 1;
-  font-size: 1.2rem;
 }
 
-/* Offer Icon Styling */
-.offer-icon {
-  top: 15px;
-  right: 15px;
-  width: 50px;
-  height: 50px;
-  z-index: 2;
+
+.product-details {
+  background-color: #f8f9fa;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: left;
 }
 
-/* Card and Buttons Styling */
-.card-body {
-  padding: 20px;
+
+.animated-button {
+  transition: background-color 0.3s, transform 0.2s ease;
 }
 
-.text-primary {
-  font-size: 1.75rem;
+.animated-button:hover {
+  transform: scale(1.05);
 }
 
-.btn-primary {
-  background-color: #007bff;
-  border-color: #007bff;
-}
 
-.btn-secondary {
-  background-color: #6c757d;
-  border-color: #6c757d;
-}
-
-.badge.bg-success {
-  background-color: #28a745;
-}
-
-.badge.bg-danger {
-  background-color: #dc3545;
+@media (max-width: 768px) {
+  .product-title {
+      font-size: 1.5rem;
+  }
+  .product-price {
+      font-size: 1.2rem;
+  }
 }

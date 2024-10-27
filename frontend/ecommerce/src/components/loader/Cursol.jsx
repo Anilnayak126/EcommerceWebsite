@@ -1,5 +1,5 @@
 import React from "react";
-import '../style/carouselstyles.css'; // Custom CSS styles
+import '../style/carouselstyles.css'; 
 import { images } from "../../data/Images";
 
 export default function ProductCarousel() {
@@ -16,7 +16,7 @@ export default function ProductCarousel() {
             <img 
               src={image.src}
               className="d-block w-100 full-screen-image" 
-              alt={`Slide ${image.id}`} // Placeholder alt text
+              alt={`Slide ${image.id}`} 
             />
             {/* Optional caption section for a more polished look */}
             <div className="carousel-caption d-none d-md-block">

@@ -9,7 +9,7 @@ class ProductsSerializer(serializers.ModelSerializer):
         model = Products
         fields = '__all__'
 
-class UserSerializer(serializers.ModelSerializer):  # Corrected name here
+class UserSerializer(serializers.ModelSerializer):  
     name = serializers.SerializerMethodField(read_only=True)
     _id = serializers.SerializerMethodField(read_only=True)
     isAdmin = serializers.SerializerMethodField(read_only=True)
@@ -18,20 +18,22 @@ class UserSerializer(serializers.ModelSerializer):  # Corrected name here
         model = User
         fields = ['_id', 'username', 'email', 'name', 'isAdmin']
 
-    def get_name(self, obj):  # Corrected indentation
+    def get_name(self, obj):  
         firstname = obj.first_name
         lastname = obj.last_name
-        name = firstname + " " + lastname  # Add space between first and last names
+        name = firstname + " " + lastname 
+
         return name
 
-    def get__id(self, obj):  # Corrected indentation
+    def get__id(self, obj): 
         return obj.id
 
-    def get_isAdmin(self, obj):  # Corrected indentation
+    def get_isAdmin(self, obj):  
         return obj.is_staff
         
-class UserSerializerwithToken(UserSerializer):  # Corrected name here as well
+class UserSerializerwithToken(UserSerializer):  
     token = serializers.SerializerMethodField(read_only=True)
+    name = serializers.SerializerMethodField(read_only=True)
     
     class Meta: 
         model = User
@@ -40,3 +42,4 @@ class UserSerializerwithToken(UserSerializer):  # Corrected name here as well
     def get_token(self, obj):
         token = RefreshToken.for_user(obj)
         return str(token.access_token)
+

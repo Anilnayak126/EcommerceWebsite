@@ -1,0 +1,97 @@
+/* General Styling */
+.about-section {
+    background-color: #ffffff; 
+    color: #333; 
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+  
+  /* Header */
+  .about-header {
+    padding: 1.5rem;
+    background-color: #f8f9fa; 
+    border-radius: 8px;
+  }
+  
+  .about-title {
+    font-size: 2.5rem;
+    color: #33AEFF; 
+  }
+  
+  .about-subtitle {
+    font-size: 1.25rem;
+    color: #555; 
+  }
+  
+  /* About Section Descriptions */
+  .about-description {
+    font-size: 1.15rem;
+    color: #555; 
+    line-height: 1.6;
+  }
+  
+  /* Button Styling */
+  .about-btn {
+    color: #433333; 
+    border-color: #1e1919;
+    transition: transform 0.3s ease, color 0.3s ease;
+  }
+  
+  .about-btn:hover {
+    color: #ffffff !important;
+    background-color: #33AEFF;
+    transform: scale(1.1);
+  }
+  
+  /* Image Styling */
+  .about-image-section {
+    text-align: center;
+  }
+  
+  .about-image {
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+  
+  .about-image:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Key Features Section */
+  .key-features-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #33AEFF; 
+    margin-bottom: 1.5rem;
+  }
+  
+  .feature {
+    color: #333; 
+  }
+  
+  .feature-icon .icon {
+    color: #33AEFF; 
+    font-size: 2.5rem;
+    transition: transform 0.3s ease;
+  }
+  
+  .feature-icon:hover .icon {
+    transform: rotate(10deg);
+  }
+  
+  .feature h5 {
+    font-size: 1.25rem;
+    color: #333; 
+  }
+  
+  .feature p {
+    color: #555; }
+  
+  /* Developed By Section */
+  .developed-by {
+    color: #888;
+    font-size: 1rem;
+    margin-top: 2rem;
+  }
+  

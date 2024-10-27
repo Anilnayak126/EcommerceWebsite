@@ -1,18 +1,18 @@
-/* Ensure the images fully cover the carousel container */
+
 .carousel .carousel-item img {
   object-fit: cover;
-  height: 60vh; /* Adjust as needed for different screen sizes */
+  height: 60vh; 
 }
 
-@media (min-width: 992px) { /* For larger screens */
+@media (min-width: 992px) {
   .carousel .carousel-item img {
-    height: 80vh; /* Increase height for more impact on large displays */
+    height: 80vh;
   }
 }
 
-/* Styling for captions to add a professional, elegant look */
+
 .carousel-caption {
-  background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  background: rgba(0, 0, 0, 0.5); 
   padding: 1rem;
   border-radius: 8px;
 }

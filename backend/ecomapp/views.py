@@ -58,13 +58,19 @@ def getProduct(request,pk):
 
 
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
-     def validate(self, attrs):
+      def validate(self, attrs):
         data = super().validate(attrs)
-        serializer=UserSerializerwithToken(self.user).data
-        for k,v in serializer.items():
-            data[k]=v       
+
+        # Use the UserSerializerwithToken to get additional user info
+        user_data = UserSerializerwithToken(self.user).data
+        
+        # Combine the token data with user data
+        data.update(user_data)
+
         return data
-    
+
+class MyTokenObtainPairView(TokenObtainPairView):
+    serializer_class=MyTokenObtainPairSerializer
 
 
 @api_view(['GET'])

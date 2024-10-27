@@ -5,7 +5,7 @@ import { listProducts } from "../../actions/productsActions";
 import ItemLoader from '../loader/ItemLoader';
 import Rating from '../loader/Ratings';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import '../style/crards.css'; 
+import '../style/crards.css';
 
 export default function Appix() {
     const dispatch = useDispatch();
@@ -24,22 +24,24 @@ export default function Appix() {
             <h1 className="text-center mb-4">Products</h1>
             <div className="row">
                 {products.map((product) => (
-                    <div className="col-md-4 mb-4" key={product._id}>
-                        <div className="card modern-card position-relative">
+                    <div className="col-md-4 col-sm-6 mb-4" key={product._id}>
+                        <div className="card h-100 position-relative overflow-hidden">
                             {product.offer && (
                                 <img 
                                     src="https://img.icons8.com/?size=100&id=XFuUHLsBR6Py&format=png&color=000000" 
                                     alt="Offer Icon" 
-                                    className="offer-icon" 
+                                    className="offer-icon position-absolute" 
                                 />
                             )}
-                            <img 
-                                src={`http://127.0.0.1:8000${product.image}`} 
-                                alt={product.productName} 
-                                className="card-img-top img-fluid product-image" 
-                                loading="lazy"
-                            />
-                            <div className="card-body">
+                            <div className="card-img-wrapper">
+                                <img 
+                                    src={`http://127.0.0.1:8000${product.image}`} 
+                                    alt={product.productName} 
+                                    className="card-img-top img-fluid" 
+                                    loading="lazy"
+                                />
+                            </div>
+                            <div className="card-body d-flex flex-column">
                                 <h5 className="card-title">{product.productName}</h5>
                                 <h6 className="card-subtitle mb-2 text-muted">{product.productBrand}</h6>
                                 <p className="card-text"><strong>Price: ${product.price}</strong></p>
@@ -51,10 +53,13 @@ export default function Appix() {
                                     />
                                 </div>
                                 <p className="card-text"><small className="text-muted">In Stock: {product.countInStock}</small></p>
-                                <button className="btn btn-primary">Add to Cart</button>
-                                <Link to={`/product/${product._id}`}>
-                                    <button className="btn btn-info float-end">View Details</button>
-                                </Link>
+                                
+                                <div className="mt-auto d-grid gap-2"> {/* Bootstrap 5 responsive button container */}
+                                    <button className="btn btn-primary w-100">Add to Cart</button>
+                                    <Link to={`/product/${product._id}`}>
+                                        <button className="btn btn-info w-100">View Details</button>
+                                    </Link>
+                                </div>
                             </div>
                         </div>
                     </div>

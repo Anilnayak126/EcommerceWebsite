@@ -5,7 +5,7 @@ import { userLoginReducers } from '../../reducers/userReducer';
 import { Login } from '../../actions/userActions';
 
 function LoginScreen() {
-  const navigate = useNavigate();  // Corrected typo
+  const navigate = useNavigate();  
   const location = useLocation();
   const redirect = location.search ? location.search.split("=")[1] : "/";
   const userLogin = useSelector((state) => state.userLogin);
@@ -19,7 +19,7 @@ function LoginScreen() {
 
   useEffect(() => {
     if (userInfo) {
-      navigate(redirect);  // Use redirect for navigation
+      navigate(redirect);  
     }
   }, [userInfo, redirect, navigate]);
 
@@ -47,7 +47,7 @@ function LoginScreen() {
               type="text"
               className="form-control"
               id="email"
-              name="email"  // Corrected to "email"
+              name="email" 
               placeholder="Enter your email"
               value={formData.email}
               onChange={handleChange}
