@@ -1,20 +1,30 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { listProducts } from "../../actions/productsActions";
+import { addToCart } from "../../actions/cartActions";
 import ItemLoader from '../loader/ItemLoader';
 import Rating from '../loader/Ratings';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../style/crards.css';
 
-export default function Appix() {
+const ProductListScreen = () => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
+
     const productsList = useSelector((state) => state.productsList);
     const { error, loading, products } = productsList;
 
     useEffect(() => {
         dispatch(listProducts());
     }, [dispatch]);
+
+    const handleAddToCart = (productId) => {
+        dispatch(addToCart(productId, 1)).then(() => {
+            // Navigate to CartScreen after adding to cart
+            navigate(`/Cart`);
+        });
+    };
 
     if (loading) return <ItemLoader />;
     if (error) return <div className="alert alert-danger">Error: {error}</div>;
@@ -52,10 +62,16 @@ export default function Appix() {
                                         color={"#f8e825"}
                                     />
                                 </div>
-                                <p className="card-text"><small className="text-muted">In Stock: {product.countInStock}</small></p>
+                                <p className="card-text">
+                                    <small className="text-muted">
+                                        {product.countInStock > 0 ? `In Stock: ${product.countInStock}` : "Out of Stock"}
+                                    </small>
+                                </p>
                                 
-                                <div className="mt-auto d-grid gap-2"> {/* Bootstrap 5 responsive button container */}
-                                    <button className="btn btn-primary w-100">Add to Cart</button>
+                                <div className="mt-auto d-grid gap-2">
+                                    <button className="btn btn-primary w-100" onClick={() => handleAddToCart(product._id)} disabled={product.countInStock === 0}>
+                                        Add to Cart
+                                    </button>
                                     <Link to={`/product/${product._id}`}>
                                         <button className="btn btn-info w-100">View Details</button>
                                     </Link>
@@ -67,4 +83,6 @@ export default function Appix() {
             </div>
         </div>
     );
-}
+};
+
+export default ProductListScreen;

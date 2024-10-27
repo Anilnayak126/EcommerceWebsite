@@ -6,10 +6,11 @@ from ecomapp.models import Products
 class CartItemSerializer(serializers.ModelSerializer):
     product_name = serializers.ReadOnlyField(source='product.productName')  # Correctly referencing productName
     product_price = serializers.ReadOnlyField(source='product.price')        # Correctly referencing price
+    product_image = serializers.ImageField(source='product.image', read_only=True)       # Correctly referencing price
 
     class Meta:
         model = CartItem
-        fields = ['id', 'product', 'product_name', 'product_price', 'quantity']
+        fields = ['id', 'product', 'product_name','product_image', 'product_price', 'quantity']
 
 class CartSerializer(serializers.ModelSerializer):
     items = CartItemSerializer(many=True, read_only=True)

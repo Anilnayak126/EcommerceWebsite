@@ -8,6 +8,8 @@ import {
     USER_REGISTER_FAIL,
     USER_LOGOUT
  } from '../constants/UserConstants';
+import { clearCart, listCartItems } from './cartActions';
+
 
 export const Signup = (fname, lname, email, password) => async (dispatch) => {
     try {
@@ -41,6 +43,7 @@ export const Signup = (fname, lname, email, password) => async (dispatch) => {
 
 export const Login = (email, password) => async (dispatch) => {
     try {
+       
         dispatch({ type: USER_LOGIN_REQUEST });
         const config = { headers: { 'Content-type': 'application/json' } };
 
@@ -49,7 +52,10 @@ export const Login = (email, password) => async (dispatch) => {
             password
         }, config);
 
+        
         dispatch({ type: USER_LOGIN_SUCCESS, payload: data });
+        dispatch(clearCart());
+        dispatch(listCartItems());
         localStorage.setItem('userInfo', JSON.stringify(data));
 
     } catch (error) {
@@ -63,6 +69,7 @@ export const Login = (email, password) => async (dispatch) => {
 };
 
 export const logout = () => (dispatch) => {
+    dispatch(clearCart());
     localStorage.removeItem('userInfo');
     dispatch({ type: USER_LOGOUT });
 };

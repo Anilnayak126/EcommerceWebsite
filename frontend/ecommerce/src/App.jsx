@@ -7,9 +7,9 @@ import Footer from "./components/Footer";
 import HomeScreen from "./components/screens/HomeScreen";
 import LoginScreens from "./components/screens/LoginScreens";
 import SignupScreens from "./components/screens/SignupScreens";
-import Cart from "./components/screens/Cart";
+import CartScreen from "./components/screens/Cart";
 import S_products from "./components/screens/S_products";
-About
+
 
 import Appix from "./components/Api/Appix";
 import About from "./components/screens/AboutScreens";
@@ -36,7 +36,7 @@ const App = () => {
           <Route  path="/Signup" element={<SignupScreens />} />
         </Routes>
         <Routes>
-          <Route  path="/Cart" element={<Cart />} />
+          <Route  path="/Cart" element={<CartScreen />} />
         </Routes>
         <Routes>
           <Route  path="/About" element={<About />} />
