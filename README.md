@@ -13,7 +13,7 @@ This project is an online marketplace built using **React** and **Redux** for th
 ## Technologies Used
 - **Frontend**: React, Redux, Bootstrap
 - **Backend**: Django, Django REST Framework
-- **Database**: PostgreSQL (or your choice of database)
+- **Database**: SQLlite3
 - **Version Control**: Git
 
 ## Installation
