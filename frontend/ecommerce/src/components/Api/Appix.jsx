@@ -14,7 +14,7 @@ const ProductListScreen = () => {
     const navigate = useNavigate();
     
     const productsList = useSelector((state) => state.productsList);
-    const { error, loading, products } = productsList;
+    const { error, Loading, products } = productsList;
     const productList = products.results || [];
     
     // Pagination state
@@ -35,7 +35,7 @@ const ProductListScreen = () => {
         setCurrentPage(page);
     };
 
-    if (loading) return <ProductSkeletonLoader />; // Use the skeleton loader here
+    if (Loading) return <ProductSkeletonLoader />; // Use the skeleton loader here
     if (error) return <div className="alert alert-danger">Error: {error}</div>;
 
     const totalCount = products?.count || 0;
@@ -49,7 +49,7 @@ const ProductListScreen = () => {
                     <div className="col-md-4 col-sm-6 mb-4" key={product._id}>
                         <div className="card h-100 position-relative overflow-hidden">
                             {product.offer && (
-                                <img 
+                               <img 
                                     src="https://img.icons8.com/?size=100&id=XFuUHLsBR6Py&format=png&color=000000" 
                                     alt="Offer Icon" 
                                     className="offer-icon position-absolute" 
