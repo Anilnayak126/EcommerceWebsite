@@ -87,5 +87,5 @@ This project is an online marketplace built using **React** and **Redux** for th
 This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## Contact
-- **Your Name** - your.email@example.com
-- **GitHub** - yourusername
+- **Your Name** - nayakanil43603@gmail.com
+- **GitHub** - Anilnayak126
