@@ -11,8 +11,8 @@ function HomeScreen() {
     <div>
         <ImageCarousel/>
         <Promotions/>
-        {/* <RecommendedProducts/> */}
-        <Testimonials/>
+        <RecommendedProducts/>
+        {/* <Testimonials/> */}
 
 
        

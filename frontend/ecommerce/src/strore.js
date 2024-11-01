@@ -5,6 +5,8 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { productListReducers, productDetailsReducers } from './reducers/productReducers';
 import { userLoginReducers, userSignupReducers } from './reducers/userReducer';
 import { cartReducer } from './reducers/cartReducers'; // Import cart reducer
+import { offerProductsReducer } from './reducers/OffersReducer';
+import paymentReducer from './reducers/paymentReducer';
 
 const userInfoFromStorage = localStorage.getItem('userInfo')
     ? JSON.parse(localStorage.getItem('userInfo'))
@@ -19,7 +21,9 @@ const reducer = combineReducers({
     productDetails: productDetailsReducers,
     userLogin: userLoginReducers,
     userSignup: userSignupReducers,
-    cart: cartReducer,  // Add cart reducer
+    cart: cartReducer,  
+    offerProducts : offerProductsReducer,
+    payment: paymentReducer,
 });
 
 const middleware = [thunk];

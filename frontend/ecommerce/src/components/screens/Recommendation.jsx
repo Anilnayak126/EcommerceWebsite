@@ -1,26 +1,32 @@
+// components/RecommendedProducts.js
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { listProducts } from '../../actions/productsActions';
+import { listOfferProducts } from '../../actions/Offerproducts';
 
 const RecommendedProducts = () => {
   const dispatch = useDispatch();
-  const productsList = useSelector((state) => state.productsList);
-  const { error, Loading, products } = productsList;
+  const offerProductsState = useSelector((state) => state.offerProducts);
+  const { error, loading, products } = offerProductsState;
 
   useEffect(() => {
-    dispatch(listProducts());
+    dispatch(listOfferProducts());
   }, [dispatch]);
-
-
-  const offerProducts = products.filter((product) => product.offer);
 
   return (
     <div className="container mt-4">
       <h2>Exclusive Offers</h2>
       <div className="row">
-        {offerProducts.length > 0 ? (
-          offerProducts.map((product) => (
+        {loading ? (
+          <div className="col-12">
+            <h5 className="text-center">Loading...</h5>
+          </div>
+        ) : error ? (
+          <div className="col-12">
+            <h5 className="text-center text-danger">{error}</h5>
+          </div>
+        ) : products && products.length > 0 ? (
+          products.map((product) => (
             <div className="col-md-4" key={product._id}>
               <div className="card mb-4 position-relative">
                 {/* Offer Icon */}
@@ -44,7 +50,9 @@ const RecommendedProducts = () => {
                 <div className="card-body">
                   <h5 className="card-title">{product.productName}</h5>
                   <p className="card-text">${product.price}</p>
+                  <Link to={`/Addcart/${product._id}`}>
                   <button className="btn btn-primary">Add to Cart</button>
+                  </Link>
                 </div>
               </div>
             </div>

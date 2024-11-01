@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from "react-router-dom";
 import { listProducts } from "../../actions/productsActions";
 import { addToCart } from "../../actions/cartActions";
-import ProductSkeletonLoader from '../loader/ProductSkeletonLoader'; // Import the skeleton loader
+import ProductSkeletonLoader from '../loader/ProductSkeletonLoader'; 
 import Rating from '../loader/Ratings';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../style/crards.css';
@@ -19,23 +19,23 @@ const ProductListScreen = () => {
     
     // Pagination state
     const [currentPage, setCurrentPage] = useState(1);
-    const pageSize = 3; // Number of items per page
+    const pageSize = 3; 
 
     useEffect(() => {
         dispatch(listProducts(currentPage, pageSize));
     }, [dispatch, currentPage]);
 
-    const handleAddToCart = (productId) => {
-        dispatch(addToCart(productId, 1)).then(() => {
-            navigate(`/Cart`);
-        });
-    };
+    // const handleAddToCart = (productId) => {
+    //     dispatch(addToCart(productId, 1)).then(() => {
+    //         navigate(`/Cart`);
+    //     });
+    // };
 
     const handlePageChange = (page) => {
         setCurrentPage(page);
     };
 
-    if (Loading) return <ProductSkeletonLoader />; // Use the skeleton loader here
+    if (Loading) return <ProductSkeletonLoader />; 
     if (error) return <div className="alert alert-danger">Error: {error}</div>;
 
     const totalCount = products?.count || 0;
@@ -80,9 +80,11 @@ const ProductListScreen = () => {
                                     </small>
                                 </p>
                                 <div className="mt-auto d-grid gap-2">
-                                    <button className="btn btn-primary w-100" onClick={() => handleAddToCart(product._id)} disabled={product.countInStock === 0}>
-                                        Add to Cart
+                                    <Link to= {`/Addcart/${product._id}`}>
+                                    <button className={`btn ${product.countInStock === 0 ? "btn-danger" : "btn-primary " } w-100` }>
+                                        {product.countInStock === 0 ? "Out Of Stock" : "Add to Cart"}
                                     </button>
+                                    </Link>
                                     <Link to={`/product/${product._id}`}>
                                         <button className="btn btn-info w-100">View Details</button>
                                     </Link>

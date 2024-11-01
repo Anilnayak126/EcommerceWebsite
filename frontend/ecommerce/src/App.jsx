@@ -1,5 +1,5 @@
 import React from "react";
-import { Container } from "react-bootstrap"; // Importing the Container component
+import { Container } from "react-bootstrap"; 
 import { HashRouter as Router, Routes, Route } from "react-router-dom";
 
 import Headers from "./components/Navbar";
@@ -14,6 +14,12 @@ import S_products from "./components/screens/S_products";
 import Appix from "./components/Api/Appix";
 import About from "./components/screens/AboutScreens";
 import Contact from "./components/screens/ContactScreens";
+import AddtoCart from "./components/screens/AddtocartScreen";
+
+import PayPalCallback from './components/screens/PayPalCallback';
+
+
+
 
 const App = () => {
   return (
@@ -43,6 +49,12 @@ const App = () => {
         </Routes>
         <Routes>
           <Route  path="/Contact" element={<Contact />} />
+        </Routes>
+        <Routes>
+          <Route  path="/Addcart/:id" element={<AddtoCart/>} />
+        </Routes>
+        <Routes>
+          <Route  path="/paypal/callback" element={<PayPalCallback />} />
         </Routes>
       </Router>
     </>

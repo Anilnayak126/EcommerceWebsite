@@ -31,6 +31,9 @@ from django.urls import reverse
 from rest_framework.pagination import PageNumberPagination
 from smtplib import SMTPServerDisconnected,SMTPException
 
+import requests
+from rest_framework.views import APIView
+
 
 # Create your views here.
 @api_view(["GET"])
@@ -45,7 +48,7 @@ class ProductPagination(PageNumberPagination):
 
 @api_view(['GET'])
 def getProducts(request):
-    products = Products.objects.all()
+    products = Products.objects.all().order_by('_id')
     paginator = ProductPagination()
     paginated_products = paginator.paginate_queryset(products, request)
     serializer = ProductsSerializer(paginated_products, many=True)
@@ -156,3 +159,48 @@ class ActivateAccountView(View):
             return render(request,'activatefail.html')
 
 
+@api_view(['GET'])
+def getOfferProducts(request):
+    offer_products = Products.objects.filter(offer=True)
+    serializer = ProductsSerializer(offer_products, many=True)
+    return Response(serializer.data)
+
+
+class PayPalPayment(APIView):
+    def post(self, request):
+        # Create PayPal payment
+        order = self.create_paypal_order(request.data['amount'])
+        return JsonResponse(order)
+
+    def create_paypal_order(self, amount):
+        url = "https://api.sandbox.paypal.com/v2/checkout/orders"
+        headers = {
+            "Content-Type": "application/json",
+            "Authorization": f"Bearer {self.get_access_token()}"
+        }
+        order_data = {
+            "intent": "CAPTURE",
+            "purchase_units": [{
+                "amount": {
+                    "currency_code": "USD",
+                    "value": str(amount)
+                }
+            }]
+        }
+
+        response = requests.post(url, headers=headers, json=order_data)
+        return response.json()
+
+    def get_access_token(self):
+        url = "https://api.sandbox.paypal.com/v1/oauth2/token"
+        headers = {
+            "Accept": "application/json",
+            "Accept-Language": "en_US"
+        }
+        response = requests.post(
+            url,
+            headers=headers,
+            auth=(settings.PAYPAL_CLIENT_ID, settings.PAYPAL_SECRET),
+            data={"grant_type": "client_credentials"}
+        )
+        return response.json()['access_token']
