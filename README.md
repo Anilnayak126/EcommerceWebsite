@@ -1,4 +1,7 @@
+
 # Online Marketplace
+
+![Online market Place](ecomApp.png)
 
 ## Overview
 This project is an online marketplace built using **React** and **Redux** for the frontend, and **Django** with **Django REST Framework (DRF)** for the backend. The design is styled using **Bootstrap**.
