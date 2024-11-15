@@ -29,6 +29,7 @@ const Header = () => {
 
   return (
     <Navbar
+  sticky='top'
   bg="primary"
   expand="lg"
   className="px-3 py-3 shadow-sm navbar-hover-fix"

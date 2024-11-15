@@ -1,0 +1,34 @@
+/* Footer.css */
+
+footer {
+    background-color: #343a40;
+}
+
+footer h5 {
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+footer ul {
+    padding-left: 0;
+    list-style: none;
+}
+
+footer ul li {
+    margin-bottom: 0.5rem;
+}
+
+footer ul.list-inline li a {
+    margin-right: 0.75rem;
+    font-size: 1.25rem;
+    color: #ddd;
+    text-decoration: none;
+}
+
+footer ul.list-inline li a:hover {
+    color: #fff;
+}
+
+footer p {
+    margin: 0;
+}

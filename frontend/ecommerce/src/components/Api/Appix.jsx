@@ -9,6 +9,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../style/crards.css';
 import Pagination from "../screens/Pagination";
 
+
+
 const ProductListScreen = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -25,11 +27,6 @@ const ProductListScreen = () => {
         dispatch(listProducts(currentPage, pageSize));
     }, [dispatch, currentPage]);
 
-    // const handleAddToCart = (productId) => {
-    //     dispatch(addToCart(productId, 1)).then(() => {
-    //         navigate(`/Cart`);
-    //     });
-    // };
 
     const handlePageChange = (page) => {
         setCurrentPage(page);

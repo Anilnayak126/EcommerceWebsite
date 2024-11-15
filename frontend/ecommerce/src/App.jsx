@@ -18,6 +18,9 @@ import AddtoCart from "./components/screens/AddtocartScreen";
 
 import PayPalCallback from './components/screens/PayPalCallback';
 
+import '@fortawesome/fontawesome-free/css/all.min.css';
+
+
 
 
 

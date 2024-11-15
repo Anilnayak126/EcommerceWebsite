@@ -1,0 +1,27 @@
+/* Benefits.css */
+
+.benefits-section {
+    background-color: #f8f9fa;
+}
+
+.benefit-icon {
+    color: #007bff;
+}
+
+.benefit-icon i {
+    transition: transform 0.3s ease;
+}
+
+.benefit-icon i:hover {
+    transform: scale(1.2);
+}
+
+.benefits-section h5 {
+    font-weight: bold;
+    margin-top: 1rem;
+}
+
+.benefits-section p {
+    color: #6c757d;
+    font-size: 0.9rem;
+}
