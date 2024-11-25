@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 
 const PaymentForm = ({ onPaymentSubmit }) => {
-    const [paymentMethod, setPaymentMethod] = useState('paypal'); // Default payment method
+    const [paymentMethod, setPaymentMethod] = useState('paypal'); 
     const [cardNumber, setCardNumber] = useState('');
     const [expiryDate, setExpiryDate] = useState('');
     const [cvv, setCvv] = useState('');
@@ -17,7 +17,7 @@ const PaymentForm = ({ onPaymentSubmit }) => {
             cvv,
             paypalEmail,
         };
-        onPaymentSubmit(paymentDetails); // Callback to handle payment submission
+        onPaymentSubmit(paymentDetails); 
     };
 
     return (

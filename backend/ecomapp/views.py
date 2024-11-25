@@ -71,10 +71,10 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
       def validate(self, attrs):
         data = super().validate(attrs)
 
-        # Use the UserSerializerwithToken to get additional user info
+        
         user_data = UserSerializerwithToken(self.user).data
         
-        # Combine the token data with user data
+      
         data.update(user_data)
 
         return data
