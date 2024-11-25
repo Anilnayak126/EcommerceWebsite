@@ -24,7 +24,7 @@ This project is an online marketplace built using **React** and **Redux** for th
 ### Prerequisites
 - Node.js
 - Python
-- PostgreSQL (or your choice of database)
+- PostgreSQL
 
 ### Backend Setup
 1. Clone the repository:
