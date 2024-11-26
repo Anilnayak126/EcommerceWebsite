@@ -4,3 +4,4 @@ __pycache__/
 *.pyc
 migrations/
 ecommerce/settings.py
+templates/
