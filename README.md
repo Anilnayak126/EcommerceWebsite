@@ -86,8 +86,6 @@ This project is an online marketplace built using **React** and **Redux** for th
 4. Push to the branch (`git push origin feature/your-feature`)
 5. Open a Pull Request
 
-## License
-This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## Contact
 - **Your Name** - nayakanil43603@gmail.com
